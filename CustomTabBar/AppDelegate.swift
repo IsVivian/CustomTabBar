@@ -16,6 +16,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.makeKeyAndVisible()
+        
+        let homeVC = HomeViewController()
+        homeVC.view.backgroundColor = UIColor.blueColor()
+        homeVC.tabBarItem.image = UIImage(named: "home_tab_icon_1@2x")
+        homeVC.title = "首页"
+        
+        let messageVC = MessageViewController()
+        messageVC.view.backgroundColor = UIColor.yellowColor()
+        messageVC.tabBarItem.image = UIImage(named: "home_tab_icon_2@2x")
+        messageVC.title = "信息"
+        
+        let personVC = PersonViewController()
+        personVC.view.backgroundColor = UIColor.redColor()
+        personVC.tabBarItem.image = UIImage(named: "home_tab_icon_4@2x")
+        personVC.title = "联系人"
+        
+        let settingVC = SettingViewController()
+        settingVC.view.backgroundColor = UIColor.greenColor()
+        settingVC.tabBarItem.image = UIImage(named: "home_tab_icon_5@2x")
+        settingVC.title = "设置"
+        
+        let customTabBar = CustomTabBarController()
+        customTabBar.tabBarView.image = UIImage(named: "mask_navbar")
+        customTabBar.selectedImg = UIImage(named: "home_bottom_tab_arrow@2x")
+        customTabBar.selectCount = 0
+        customTabBar.viewControllers = [homeVC.navi, messageVC.navi, UIViewController(), personVC.navi, settingVC.navi]
+        
+        self.window?.rootViewController = customTabBar
+        
         return true
     }
 
